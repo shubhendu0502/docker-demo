@@ -12,8 +12,9 @@ node {
      }
    }
    stage('docker build/push') {
-     docker.withRegistry('https://hub.docker.com/', 'dockerhub') {
-       def app = docker.build("shubhendu0502/nodejs-demo:${commit_id}", '.').push()
+     docker.withRegistry('https://hub.docker.com', 'dockerhub') {
+       def app = docker.build("shubhendu0502/nodejs-demo:${commit_id}", '.')
+       app.push()
      }
    }
 }
